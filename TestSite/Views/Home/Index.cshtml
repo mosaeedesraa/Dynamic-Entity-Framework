@@ -1,0 +1,94 @@
+﻿@model List<TestSite.Models.Test>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Buttons</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr id="@item.ID">
+            <td>@item.ID</td>
+            <td>@item.Name</td>
+            <td>@item.Age</td>
+            <td>@item.Address</td>
+            <td>
+                <input type="button" value="Update" onclick="Update(@item.ID)" />
+                <input type="button" value="Deelte" onclick="Delete(@item.ID)" />
+                <input type="button" value="StoredProcedure" onclick="GetNumberCount(@item.ID)" />
+            </td>
+        </tr>
+    }
+</table>
+
+<br />
+<input type="button" value="StoredProcedure" onclick="GetNumberCount()" />
+<br />
+
+
+
+
+<br />
+<span>Name</span><input type="text" value="" id="txtName" /><br />
+<span>Age</span><input type="number" value="" id="txtAge" /><br />
+<span>Address</span><input type="text" value="" id="txtAddress" /><br />
+<input type="button" id="add" value="Add" onclick="AddData()" />
+<input type="button" id="update" value="Update" onclick="UpdateData()" disabled="disabled" />
+
+<script src="~/Scripts/jq.js"></script>
+
+<script>
+    var ID = 0;
+    function AddData() {
+        var name = $('#txtName').val();
+        var age = $('#txtAge').val();
+        var address = $('#txtAddress').val();
+        $.post('@Url.Action("AddTest", "Home")', { Name: name, Age: age, Address: address }, function (data) {
+            alert('Successfully Added..!');
+        });
+    }
+
+    function UpdateData() {
+        var name = $('#txtName').val();
+        var age = $('#txtAge').val();
+        var address = $('#txtAddress').val();
+        $.post('@Url.Action("UpdateTest", "Home")', { ID : ID ,Name: name, Age: age, Address: address }, function (data) {
+            alert('Successfully Added..!');
+        });
+        $('#update').attr('disabled',true);
+        $('#add').attr('disabled',false);
+        ID = 0;
+    }
+    function Update(_ID) {
+        $('#update').attr('disabled',false);
+        $('#add').attr('disabled',true);
+        ID = _ID;
+        $.post('@Url.Action("GetRow", "Home")', { ID: _ID }, function (data) {
+            $('#txtName').val(data.Name);
+            $('#txtAge').val(data.Age);
+            $('#txtAddress').val(data.Address);
+        });    
+    }
+
+    function Delete(ID) {
+        $.post('@Url.Action("DeleteTest", "Home")', { ID: ID }, function (data) {
+            alert('Successfully Deleted..!');
+            $('#' + ID).hide();
+        });
+    }
+
+    function GetNumberCount(_id) {
+        $.post('@Url.Action("CallSP", "Home")', {ID : _id}, function (data) {
+            alert('Table Count : ' + data.Name + ' ' + data.Age + ' ' + data.Address);
+        });
+    }
+</script>
