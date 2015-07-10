@@ -11,6 +11,7 @@ Call sql tables and stored procedures easily and fast
 3 - Create properties (their names = columns names)
 
 // SQl scripts for table
+
 CREATE TABLE [dbo].[Test](
 
 	[ID] [int] IDENTITY(1,1) NOT NULL,
