@@ -1,4 +1,4 @@
-# Dynamic-Entity-Framework
+# Dynamic Entity Framework
 
 Call sql tables and stored procedures easily and fast
 
