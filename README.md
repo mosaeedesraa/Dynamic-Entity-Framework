@@ -60,16 +60,25 @@ GO
         
         Tables<Test> dc = new Tables<Test>(ConnectionString); 
         
-6 - Use select * from Test             = dc.AllData();
+6 - In SQL :  Use select * from Test             
 
-7 - delete from Test where ID = @id    = dc.Delete(ID);
+In Entity :   dc.AllData();
 
-8 - Insert into Test values(....)      = dc.Insert(test);   // Test test = new Test(); fill data inside it
+7 - In SQL :  delete from Test where ID = @id    
 
-9 - Update from Test Set ....          = dc.Update(test)    // Test test = new Test(); fill data inside it
+In Entity : dc.Delete(ID);
 
-10 - select * from Test where ID = @id = dc.Find(ID);
+8 - In SQL :  Insert into Test values(....)      
 
+In Entity  : dc.Insert(test);   // Test test = new Test(); fill data inside it
+
+9 - In SQL  : Update from Test Set ....          
+
+In Entity      : dc.Update(test)    // Test test = new Test(); fill data inside it
+
+10 - In SQL : select * from Test where ID = @id 
+
+In Entity   : dc.Find(ID);
 
 #Nuget Package : 
 
