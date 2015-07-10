@@ -78,6 +78,11 @@ GO
 10 - select * from Test where ID = @id = dc.Find(ID);
 
 
+#Nuget Package : 
+
+https://www.nuget.org/packages/DynamicEntity/
+
+
 #Video Tutorial in youtube
 
 https://www.youtube.com/watch?v=nC_8IFQowAg&feature=youtu.be
