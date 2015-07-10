@@ -1,10 +1,15 @@
 # Dynamic-Entity-Framework
+
 Call sql tables and stored procedures easily and fast
 
 #Installation : 
+
 1 - Create database (Sample) and Tables (dbo.Test)
+
 2 - Create class (class name : Test) {table name = test  ====== class name = test}
+
 3 - Create properties (their names = columns names)
+
 // SQl scripts for table
 
 CREATE TABLE [dbo].[Test](
@@ -20,7 +25,9 @@ CREATE TABLE [dbo].[Test](
 
 GO
 
+
 4 - Test Class : 
+
  public class Test
     {
         public Int32 ID { get; set; }
