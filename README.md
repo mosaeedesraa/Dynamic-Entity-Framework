@@ -12,14 +12,23 @@ Call sql tables and stored procedures easily and fast
 
 // SQl scripts for table
 CREATE TABLE [dbo].[Test](
+
 	[ID] [int] IDENTITY(1,1) NOT NULL,
+	
 	[Name] [nvarchar](50) NOT NULL,
+	
 	[Age] [int] NOT NULL,
+	
 	[Address] [nvarchar](50) NOT NULL,
+	
  CONSTRAINT [PK_Test] PRIMARY KEY CLUSTERED 
+ 
 ([ID] ASC )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, 
+
 IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
 ) ON [PRIMARY]
+
 GO
 
 
@@ -27,10 +36,15 @@ GO
 4 - Test Class : 
  public class Test
     {
+    
         public Int32 ID { get; set; }
+        
         public string Name { get; set; }
+        
         public Int32 Age { get; set; }
+        
         public string Address { get; set; }
+        
     }
     
     
